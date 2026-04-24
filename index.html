@@ -9,7 +9,19 @@
 *{box-sizing:border-box}
 body { margin:0; font-family:'Poppins', sans-serif; color:white; overflow:hidden; }
 h2 { font-family:'Pacifico', cursive; margin-bottom:10px; }
-.page { display:none; height:100vh; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:20px; }
+.page {
+ display:none;
+ height:100vh;
+ justify-content:center;
+ align-items:center;
+ flex-direction:column;
+ text-align:center;
+ padding:20px;
+}
+.active {
+ display:flex;
+ animation: fadeIn 0.8s;
+}
 .active { display:flex; animation: fadeIn 0.8s; }
 button { padding:12px 24px; border:none; border-radius:25px; background:#ff4d6d; color:white; cursor:pointer; transition:0.3s; box-shadow:0 5px 15px rgba(0,0,0,0.2);} 
 button:hover { transform:scale(1.1); }
