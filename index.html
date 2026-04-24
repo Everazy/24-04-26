@@ -7,7 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body { 
   margin:0; 
@@ -37,8 +39,14 @@ h2 {
 }
 
 @keyframes fadeSmooth { 
-  from{opacity:0; transform:scale(0.96);} 
-  to{opacity:1; transform:scale(1);} 
+  from{
+    opacity:0; 
+    transform:scale(0.96);
+  } 
+  to{
+    opacity:1; 
+    transform:scale(1);
+  } 
 }
 
 button { 
@@ -49,6 +57,8 @@ button {
   color:white; 
   cursor:pointer; 
   margin-top:15px; 
+  font-weight:600;
+  box-shadow:0 8px 20px rgba(0,0,0,0.18);
 }
 
 /* floating hearts */
@@ -58,10 +68,15 @@ button {
   font-size:16px; 
   animation: floatUp 6s linear infinite; 
   opacity:0.7; 
+  pointer-events:none;
+  z-index:5;
 }
 
 @keyframes floatUp { 
-  to { transform: translateY(-110vh); opacity:0; } 
+  to { 
+    transform: translateY(-110vh); 
+    opacity:0; 
+  } 
 }
 
 /* cat decor */
@@ -82,12 +97,30 @@ button {
 }
 
 /* backgrounds */
-#page1{background:linear-gradient(135deg,#ff9a9e,#fad0c4);} 
-#page2{background:linear-gradient(135deg,#a18cd1,#fbc2eb);} 
-#page3{background:linear-gradient(135deg,#fbc2eb,#a6c1ee);} 
-#page4{background:linear-gradient(135deg,#ffecd2,#fcb69f);} 
-#page5{background:linear-gradient(135deg,#cfd9df,#e2ebf0); color:black;} 
-#page6{background:linear-gradient(135deg,#ff9a9e,#fecfef);} 
+#page1{
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+} 
+
+#page2{
+  background:linear-gradient(135deg,#a18cd1,#fbc2eb);
+} 
+
+#page3{
+  background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+} 
+
+#page4{
+  background:linear-gradient(135deg,#ffecd2,#fcb69f);
+} 
+
+#page5{
+  background:linear-gradient(135deg,#cfd9df,#e2ebf0);
+  color:black;
+} 
+
+#page6{
+  background:linear-gradient(135deg,#ff9a9e,#fecfef);
+} 
 
 /* page1 */
 .main-img { 
@@ -99,7 +132,9 @@ button {
 } 
 
 @keyframes pulse { 
-  50%{transform:scale(1.1);} 
+  50%{
+    transform:scale(1.1);
+  } 
 }
 
 /* game */
@@ -109,6 +144,7 @@ button {
   padding:30px; 
   border-radius:30px; 
   width:320px; 
+  box-shadow:0 12px 30px rgba(0,0,0,0.2);
 }
 
 .word { 
@@ -138,6 +174,7 @@ button {
   padding:25px; 
   border-radius:35px; 
   position:relative; 
+  box-shadow:0 12px 30px rgba(0,0,0,0.2);
 }
 
 .video-box img.decor { 
@@ -159,6 +196,7 @@ video {
   max-width:80%;
   border-radius:20px; 
   margin-bottom:15px; 
+  box-shadow:0 12px 25px rgba(0,0,0,0.22);
 }
 
 .song { 
@@ -170,6 +208,7 @@ video {
   cursor:pointer; 
   display:inline-block;
   font-weight:500;
+  box-shadow:0 6px 15px rgba(0,0,0,0.14);
 }
 
 .song:hover {
@@ -190,33 +229,211 @@ video {
   font-weight:500;
 }
 
-/* gallery */
-.gallery-box { 
-  width:300px; 
-  height:260px; 
-  overflow-y:auto; 
-  background:white; 
-  padding:10px; 
-  border-radius:25px; 
+/* PAGE 5 SPLIT MEMORY */
+#page5{
+  padding:0;
+  overflow:hidden;
 }
 
-.gallery-box img { 
-  width:100%; 
-  border-radius:10px; 
-  margin-bottom:10px; 
+.memory-page{
+  width:100%;
+  height:100vh;
+  display:flex;
+}
+
+/* kiri: foto */
+.memory-left{
+  width:50%;
+  height:100%;
+  overflow-y:auto;
+  padding:25px 18px;
+  background:rgba(255,255,255,0.25);
+}
+
+.memory-left h2{
+  margin:0 0 18px;
+  color:#ff4d6d;
+  text-shadow:0 2px 8px rgba(255,255,255,0.9);
+}
+
+.gallery-box{
+  width:100%;
+  background:rgba(255,255,255,0.42);
+  backdrop-filter:blur(6px);
+  padding:15px;
+  border-radius:28px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-auto-rows:90px;
+  gap:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.14);
+}
+
+.gallery-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
+  background:white;
+  padding:5px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.17);
+  transition:0.3s ease;
+}
+
+.gallery-box img:hover{
+  transform:scale(1.04) rotate(0deg) !important;
+  z-index:3;
+}
+
+/* variasi ukuran kolase */
+.gallery-box img:nth-child(6n+1){
+  grid-row:span 2;
+  transform:rotate(-3deg);
+}
+
+.gallery-box img:nth-child(6n+2){
+  grid-column:span 2;
+  grid-row:span 2;
+  transform:rotate(2deg);
+}
+
+.gallery-box img:nth-child(6n+3){
+  grid-row:span 3;
+  transform:rotate(-2deg);
+}
+
+.gallery-box img:nth-child(6n+4){
+  transform:rotate(3deg);
+}
+
+.gallery-box img:nth-child(6n+5){
+  grid-column:span 2;
+  transform:rotate(-2deg);
+}
+
+.gallery-box img:nth-child(6n){
+  grid-row:span 2;
+  transform:rotate(2deg);
+}
+
+/* kanan: teks */
+.memory-right{
+  width:50%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:35px;
+  background:linear-gradient(135deg,#fff5f7,#ffe4ec);
+}
+
+.text-card{
+  width:100%;
+  max-width:520px;
+  min-height:70vh;
+  background:rgba(255,255,255,0.8);
+  border-radius:35px;
+  padding:32px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+}
+
+.text-card::before{
+  content:"❤️";
+  position:absolute;
+  font-size:120px;
+  opacity:0.08;
+  right:20px;
+  bottom:10px;
+}
+
+.text-card h2{
+  color:#ff4d6d;
+  margin-top:0;
+  margin-bottom:18px;
+  text-align:center;
+}
+
+.text-card p{
+  color:#333;
+  font-size:16px;
+  line-height:1.8;
+  margin-bottom:16px;
 }
 
 /* floating photos last */
 .float-img { 
   position:absolute; 
   bottom:-20px; 
-  width:45px; 
-  border-radius:10px; 
+  width:55px; 
+  height:70px;
+  object-fit:cover;
+  border-radius:12px; 
+  background:white;
+  padding:4px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.2);
   animation: floatUp 6s linear infinite; 
+  pointer-events:none;
 }
 
 .hidden{
   display:none;
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .memory-page{
+    flex-direction:column;
+    overflow-y:auto;
+  }
+
+  .memory-left,
+  .memory-right{
+    width:100%;
+    height:auto;
+  }
+
+  .memory-left{
+    max-height:55vh;
+  }
+
+  .memory-right{
+    min-height:45vh;
+    padding:20px;
+  }
+
+  .text-card{
+    min-height:auto;
+  }
+
+  .gallery-box{
+    grid-template-columns:repeat(3, 1fr);
+    grid-auto-rows:80px;
+  }
+}
+
+@media (max-width: 600px){
+  .gallery-box{
+    grid-template-columns:repeat(2, 1fr);
+    grid-auto-rows:78px;
+    gap:10px;
+    padding:12px;
+  }
+
+  .gallery-box img:nth-child(6n+2),
+  .gallery-box img:nth-child(6n+5){
+    grid-column:span 1;
+  }
+
+  .text-card{
+    padding:24px;
+  }
+
+  .text-card p{
+    font-size:15px;
+  }
 }
 </style>
 </head>
@@ -271,67 +488,95 @@ video {
   <button onclick="nextPage(5)">Lanjut</button>
 </div>
 
-<!-- PAGE 5 GALLERY -->
+<!-- PAGE 5 GALLERY + TEXT -->
 <div class="page" id="page5">
-  <h2>Little Bit of Our Memory 📸</h2>
-  <div class="gallery-box">
-    <img src="20240715_122138_981.jpg">
-    <img src="20240715_122851_878.jpg">
-    <img src="20241216_133004_295.jpg">
-    <img src="20260418_201755_967.jpg">
-    <img src="WhatsApp Image 2026-04-24 at 17.41.14.jpeg">
-    <img src="IMG-20230717-WA0011.jpg">
-    <img src="IMG-20230813-WA0007.jpg">
-    <img src="IMG-20230818-WA0014.jpg">
-    <img src="IMG-20240111-WA0009.jpg">
-    <img src="IMG-20240121-WA0003.jpg">
-    <img src="IMG-20240524-WA0002.jpg">
-    <img src="IMG-20240528-WA0024.jpg">
-    <img src="IMG-20240718-WA0031.jpg">
-    <img src="IMG-20241203-WA0011.jpg">
-    <img src="IMG-20250114-WA0030.jpg">
-    <img src="IMG-20250131-WA0020.jpg">
-    <img src="IMG-20250505-WA0023.jpg">
-    <img src="IMG-20250505-WA0027.jpg">
-    <img src="IMG-20250523-WA0037.jpg">
-    <img src="IMG-20250604-WA0016.jpg">
-    <img src="IMG-20260116-WA0142.jpg">
-    <img src="IMG-20260418-WA0075.jpeg">
-    <img src="IMG_20230928_164918.jpg">
-    <img src="IMG_20231016_165334.jpg">
-    <img src="IMG_20240326_005307_511.jpg">
-    <img src="IMG_20240501_103437.jpg">
-    <img src="IMG_20240523_134128.jpg">
-    <img src="IMG_20240523_134212.jpg">
-    <img src="IMG_20251016_173809_404.webp">
-    <img src="IMG_20251023_192914_044.jpg">
-    <img src="IMG_20251023_202925_385.jpg">
-    <img src="IMG_20260418_183257_843.jpg">
-    <img src="IMG_20260418_195353_819.jpg">
-    <img src="IMG_20260418_195404_807.jpg">
-    <img src="IMG_20260418_200538_481.jpg">
-    <img src="IMG_20260418_200551_787.jpg">
-    <img src="PXL_20240201_205230409.jpg">
-    <img src="PXL_20240217_165631878.jpg">
-    <img src="PXL_20240503_143052332.jpg">
-    <img src="PXL_20240503_143254363.jpg">
-    <img src="PXL_20240704_163412456.jpg">
-    <img src="PXL_20240725_153209817.jpg">
-    <img src="PXL_20241004_193709174.jpg">
-    <img src="PXL_20241004_193716482.jpg">
-    <img src="PXL_20241014_215320556.jpg">
-    <img src="PXL_20241014_215337557.jpg">
-    <img src="PXL_20241102_195226460.jpg">
-    <img src="PXL_20241204_120118801.jpg">
-    <img src="PXL_20241212_071637353.jpg">
-    <img src="PXL_20241212_071846386.jpg">
-    <img src="PXL_20250104_191854440.jpg">
-    <img src="PXL_20250111_194016217.jpg">
-    <img src="PXL_20250303_190338133.jpg">
-    <img src="PXL_20250303_190434904.jpg">
-    <img src="Picsart_23-07-31_23-39-46-558.jpg">
+  <div class="memory-page">
+
+    <!-- BAGIAN KIRI FOTO -->
+    <div class="memory-left">
+      <h2>Little Bit of Our Memory 📸</h2>
+
+      <div class="gallery-box">
+        <img src="20240715_122138_981.jpg">
+        <img src="20240715_122851_878.jpg">
+        <img src="20241216_133004_295.jpg">
+        <img src="20260418_201755_967.jpg">
+        <img src="WhatsApp Image 2026-04-24 at 17.41.14.jpeg">
+        <img src="IMG-20230717-WA0011.jpg">
+        <img src="IMG-20230813-WA0007.jpg">
+        <img src="IMG-20230818-WA0014.jpg">
+        <img src="IMG-20240111-WA0009.jpg">
+        <img src="IMG-20240121-WA0003.jpg">
+        <img src="IMG-20240524-WA0002.jpg">
+        <img src="IMG-20240528-WA0024.jpg">
+        <img src="IMG-20240718-WA0031.jpg">
+        <img src="IMG-20241203-WA0011.jpg">
+        <img src="IMG-20250114-WA0030.jpg">
+        <img src="IMG-20250131-WA0020.jpg">
+        <img src="IMG-20250505-WA0023.jpg">
+        <img src="IMG-20250505-WA0027.jpg">
+        <img src="IMG-20250523-WA0037.jpg">
+        <img src="IMG-20250604-WA0016.jpg">
+        <img src="IMG-20260116-WA0142.jpg">
+        <img src="IMG-20260418-WA0075.jpeg">
+        <img src="IMG_20230928_164918.jpg">
+        <img src="IMG_20231016_165334.jpg">
+        <img src="IMG_20240326_005307_511.jpg">
+        <img src="IMG_20240501_103437.jpg">
+        <img src="IMG_20240523_134128.jpg">
+        <img src="IMG_20240523_134212.jpg">
+        <img src="IMG_20251016_173809_404.webp">
+        <img src="IMG_20251023_192914_044.jpg">
+        <img src="IMG_20251023_202925_385.jpg">
+        <img src="IMG_20260418_183257_843.jpg">
+        <img src="IMG_20260418_195353_819.jpg">
+        <img src="IMG_20260418_195404_807.jpg">
+        <img src="IMG_20260418_200538_481.jpg">
+        <img src="IMG_20260418_200551_787.jpg">
+        <img src="PXL_20240201_205230409.jpg">
+        <img src="PXL_20240217_165631878.jpg">
+        <img src="PXL_20240503_143052332.jpg">
+        <img src="PXL_20240503_143254363.jpg">
+        <img src="PXL_20240704_163412456.jpg">
+        <img src="PXL_20240725_153209817.jpg">
+        <img src="PXL_20241004_193709174.jpg">
+        <img src="PXL_20241004_193716482.jpg">
+        <img src="PXL_20241014_215320556.jpg">
+        <img src="PXL_20241014_215337557.jpg">
+        <img src="PXL_20241102_195226460.jpg">
+        <img src="PXL_20241204_120118801.jpg">
+        <img src="PXL_20241212_071637353.jpg">
+        <img src="PXL_20241212_071846386.jpg">
+        <img src="PXL_20250104_191854440.jpg">
+        <img src="PXL_20250111_194016217.jpg">
+        <img src="PXL_20250303_190338133.jpg">
+        <img src="PXL_20250303_190434904.jpg">
+        <img src="Picsart_23-07-31_23-39-46-558.jpg">
+      </div>
+    </div>
+
+    <!-- BAGIAN KANAN TEKS -->
+    <div class="memory-right">
+      <div class="text-card">
+        <h2>Untuk Kamu ❤️</h2>
+
+        <p>
+          Tulis teks kamu di sini nanti.
+        </p>
+
+        <p>
+          Contoh: dari semua foto ini, aku cuma mau bilang kalau setiap momen sama kamu selalu jadi bagian paling indah dalam hidupku.
+        </p>
+
+        <p>
+          Ganti bagian ini sesuka hati kamu. Bisa panjang juga, nanti tetap rapi di dalam kotak ini.
+        </p>
+
+        <button onclick="nextPage(6)">Lanjut</button>
+      </div>
+    </div>
+
   </div>
-  <button onclick="nextPage(6)">Lanjut</button>
 </div>
 
 <!-- PAGE 6 END -->
@@ -345,6 +590,65 @@ function nextPage(n){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page' + n).classList.add('active');
 }
+
+// daftar foto asli
+const photoList = [
+  "20240715_122138_981.jpg",
+  "20240715_122851_878.jpg",
+  "20241216_133004_295.jpg",
+  "20260418_201755_967.jpg",
+  "WhatsApp Image 2026-04-24 at 17.41.14.jpeg",
+  "IMG-20230717-WA0011.jpg",
+  "IMG-20230813-WA0007.jpg",
+  "IMG-20230818-WA0014.jpg",
+  "IMG-20240111-WA0009.jpg",
+  "IMG-20240121-WA0003.jpg",
+  "IMG-20240524-WA0002.jpg",
+  "IMG-20240528-WA0024.jpg",
+  "IMG-20240718-WA0031.jpg",
+  "IMG-20241203-WA0011.jpg",
+  "IMG-20250114-WA0030.jpg",
+  "IMG-20250131-WA0020.jpg",
+  "IMG-20250505-WA0023.jpg",
+  "IMG-20250505-WA0027.jpg",
+  "IMG-20250523-WA0037.jpg",
+  "IMG-20250604-WA0016.jpg",
+  "IMG-20260116-WA0142.jpg",
+  "IMG-20260418-WA0075.jpeg",
+  "IMG_20230928_164918.jpg",
+  "IMG_20231016_165334.jpg",
+  "IMG_20240326_005307_511.jpg",
+  "IMG_20240501_103437.jpg",
+  "IMG_20240523_134128.jpg",
+  "IMG_20240523_134212.jpg",
+  "IMG_20251016_173809_404.webp",
+  "IMG_20251023_192914_044.jpg",
+  "IMG_20251023_202925_385.jpg",
+  "IMG_20260418_183257_843.jpg",
+  "IMG_20260418_195353_819.jpg",
+  "IMG_20260418_195404_807.jpg",
+  "IMG_20260418_200538_481.jpg",
+  "IMG_20260418_200551_787.jpg",
+  "PXL_20240201_205230409.jpg",
+  "PXL_20240217_165631878.jpg",
+  "PXL_20240503_143052332.jpg",
+  "PXL_20240503_143254363.jpg",
+  "PXL_20240704_163412456.jpg",
+  "PXL_20240725_153209817.jpg",
+  "PXL_20241004_193709174.jpg",
+  "PXL_20241004_193716482.jpg",
+  "PXL_20241014_215320556.jpg",
+  "PXL_20241014_215337557.jpg",
+  "PXL_20241102_195226460.jpg",
+  "PXL_20241204_120118801.jpg",
+  "PXL_20241212_071637353.jpg",
+  "PXL_20241212_071846386.jpg",
+  "PXL_20250104_191854440.jpg",
+  "PXL_20250111_194016217.jpg",
+  "PXL_20250303_190338133.jpg",
+  "PXL_20250303_190434904.jpg",
+  "Picsart_23-07-31_23-39-46-558.jpg"
+];
 
 // hearts
 setInterval(() => {
@@ -415,16 +719,20 @@ function playSong(src, img, title){
 // Kalau file audio error / tidak ditemukan
 document.getElementById('audio').addEventListener('error', function(){
   document.getElementById('musicStatus').innerText = 
-  "File lagunya tidak ketemu. Pastikan namanya persis: KOMANG.mp3 atau PHOTOGRAPH.mp3";
+  "File lagunya tidak ketemu. Pastikan nama file MP3-nya sama persis dengan yang di coding.";
 });
 
 // FLOATING PHOTOS LAST PAGE
 setInterval(() => {
   if(document.getElementById('page6').classList.contains('active')){
     let img = document.createElement('img');
-    img.src = 'foto1.jpg';
+    let randomFoto = photoList[Math.floor(Math.random() * photoList.length)];
+
+    img.src = randomFoto;
     img.className = 'float-img';
     img.style.left = Math.random() * 100 + 'vw';
+    img.style.transform = 'rotate(' + ((Math.random() * 20) - 10) + 'deg)';
+    
     document.body.appendChild(img);
     setTimeout(() => img.remove(), 6000);
   }
