@@ -4,58 +4,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Kamu ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body { margin:0; font-family: Arial; background:#111; color:white; text-align:center; overflow:hidden; }
-.page { display:none; padding:20px; }
+body { margin:0; font-family:'Quicksand', sans-serif; background:#111; color:white; text-align:center; overflow:hidden; }
+h2 { font-family:'Pacifico', cursive; }
+.page { display:none; padding:20px; animation: fadeIn 0.8s; }
 .active { display:block; }
-button { padding:10px 20px; margin-top:20px; border:none; border-radius:10px; background:#ff4d6d; color:white; cursor:pointer; }
+button { padding:10px 20px; margin-top:20px; border:none; border-radius:20px; background:#ff4d6d; color:white; cursor:pointer; transition:0.3s; }
+button:hover { transform: scale(1.1); }
 
-/* Floating hearts */
-.heart {
- position: fixed;
- bottom: -10px;
- font-size: 20px;
- animation: floatUp 5s linear infinite;
-}
-@keyframes floatUp {
- 0% { transform: translateY(0); opacity:1; }
- 100% { transform: translateY(-100vh); opacity:0; }
-}
+@keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 
-/* Page 1 envelope */
-.envelope { width:200px; height:120px; background:#ff6f91; margin:100px auto; position:relative; cursor:pointer; transition: transform 0.5s; }
-.envelope:hover { transform: scale(1.1); }
+/* Hearts */
+.heart { position: fixed; bottom: -10px; font-size: 20px; animation: floatUp 5s linear infinite; }
+@keyframes floatUp { 0%{transform:translateY(0);opacity:1;}100%{transform:translateY(-100vh);opacity:0;} }
+
+/* Envelope */
+.envelope {
+ width:200px;height:120px;background:#ff6f91;margin:100px auto;position:relative;cursor:pointer;
+ border-radius:10px;transition:0.5s;
+}
+.envelope:hover { transform: rotate(-3deg) scale(1.1); }
 .envelope:before {
- content:'';
- position:absolute;
- top:0;
- left:0;
- width:0;
- height:0;
- border-left:100px solid transparent;
- border-right:100px solid transparent;
- border-bottom:60px solid #ff8fab;
+ content:'';position:absolute;top:0;left:0;width:0;height:0;
+ border-left:100px solid transparent;border-right:100px solid transparent;border-bottom:60px solid #ff8fab;
 }
-.letter { display:none; background:white; color:black; padding:20px; margin-top:20px; border-radius:10px; animation: fadeIn 1s; }
-
-@keyframes fadeIn {
- from { opacity:0; transform: translateY(20px);} 
- to { opacity:1; transform: translateY(0);} 
+.letter {
+ display:none;background:white;color:black;padding:20px;margin-top:20px;border-radius:15px;
+ animation: bounceIn 0.8s;
+}
+@keyframes bounceIn {
+ 0%{transform:scale(0.5);opacity:0;}70%{transform:scale(1.1);}100%{transform:scale(1);opacity:1;}
 }
 
 /* Game */
-.letters span { font-size:30px; margin:5px; padding:10px; background:#333; display:inline-block; cursor:pointer; border-radius:10px; transition:0.3s; }
-.letters span:hover { background:#ff4d6d; transform: scale(1.2); }
+.letters span {
+ font-size:30px;margin:5px;padding:10px;background:#333;display:inline-block;cursor:pointer;
+ border-radius:10px;transition:0.3s;
+}
+.letters span:hover { background:#ff4d6d; transform: scale(1.3) rotate(5deg); }
 
 /* Photo */
 .hidden { display:none; }
 img { max-width:80%; border-radius:20px; cursor:pointer; transition:0.5s; }
-img:hover { transform: scale(1.05); }
+img:hover { transform: scale(1.05) rotate(1deg); }
+
+/* Music list */
+.song { padding:10px; margin:10px; background:#222; border-radius:15px; cursor:pointer; transition:0.3s; }
+.song:hover { background:#ff4d6d; transform:scale(1.05); }
 </style>
 </head>
 <body>
 
-<!-- Floating hearts container -->
 <div id="hearts"></div>
 
 <!-- PAGE 1 -->
@@ -69,14 +69,14 @@ img:hover { transform: scale(1.05); }
   </div>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 GAME -->
 <div class="page" id="page2">
   <h2>Susun kata: S A Y A N G</h2>
   <div class="letters" id="letters"></div>
   <p id="result"></p>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 VIDEO -->
 <div class="page" id="page3">
   <h2>Video untuk kamu 🎥</h2>
   <video controls width="300">
@@ -86,20 +86,31 @@ img:hover { transform: scale(1.05); }
   <button onclick="nextPage(4)">Lanjut</button>
 </div>
 
-<!-- PAGE 4 -->
+<!-- PAGE 4 MUSIC -->
 <div class="page" id="page4">
+  <h2>Pilih lagu untuk kita 🎶</h2>
+  <div class="song" onclick="playSong('lagu1.mp3')">Lagu 1 💖</div>
+  <div class="song" onclick="playSong('lagu2.mp3')">Lagu 2 💕</div>
+  <div class="song" onclick="playSong('lagu3.mp3')">Lagu 3 🌹</div>
+  <audio id="audio" controls></audio>
+  <br>
+  <button onclick="nextPage(5)">Lanjut</button>
+</div>
+
+<!-- PAGE 5 PHOTO -->
+<div class="page" id="page5">
   <h2>Kenangan kita 📸</h2>
   <img src="foto.jpg" onclick="showText()">
   <div id="text" class="hidden">
-    <p style="animation: fadeIn 1s;">Setiap momen sama kamu itu berharga ❤️</p>
-    <button onclick="nextPage(5)">Lanjut</button>
+    <p>Setiap momen sama kamu itu berharga ❤️</p>
+    <button onclick="nextPage(6)">Lanjut</button>
   </div>
 </div>
 
-<!-- PAGE 5 -->
-<div class="page" id="page5">
-  <h2 style="animation: fadeIn 2s;">Terima kasih ❤️</h2>
-  <p style="animation: fadeIn 3s;">Aku sayang kamu, sekarang dan selamanya 💖</p>
+<!-- PAGE 6 END -->
+<div class="page" id="page6">
+  <h2>Terima kasih ❤️</h2>
+  <p>Aku sayang kamu, sekarang dan selamanya 💖</p>
 </div>
 
 <script>
@@ -112,29 +123,27 @@ function openLetter(){
  document.getElementById('letter').style.display='block';
 }
 
-// Floating hearts generator
 function createHeart(){
- const heart = document.createElement('div');
+ const heart=document.createElement('div');
  heart.classList.add('heart');
- heart.innerText = '❤️';
- heart.style.left = Math.random()*100 + 'vw';
- heart.style.fontSize = (Math.random()*20 + 10) + 'px';
+ heart.innerText='❤️';
+ heart.style.left=Math.random()*100+'vw';
+ heart.style.fontSize=(Math.random()*20+10)+'px';
  document.body.appendChild(heart);
  setTimeout(()=>heart.remove(),5000);
 }
-setInterval(createHeart, 300);
+setInterval(createHeart,300);
 
 // GAME
-let target = "SAYANG";
-let shuffled = target.split('').sort(()=>0.5-Math.random());
-let current = "";
-
-let lettersDiv = document.getElementById('letters');
+let target="SAYANG";
+let shuffled=target.split('').sort(()=>0.5-Math.random());
+let current="";
+let lettersDiv=document.getElementById('letters');
 shuffled.forEach(l=>{
- let span = document.createElement('span');
- span.innerText = l;
- span.onclick = ()=>{
-   current += l;
+ let span=document.createElement('span');
+ span.innerText=l;
+ span.onclick=()=>{
+   current+=l;
    span.style.visibility='hidden';
    checkWord();
  }
@@ -142,12 +151,12 @@ shuffled.forEach(l=>{
 });
 
 function checkWord(){
- if(current.length === target.length){
-   if(current === target){
-     document.getElementById('result').innerHTML = "Benar! ❤️";
+ if(current.length===target.length){
+   if(current===target){
+     document.getElementById('result').innerHTML="Benar! ❤️";
      setTimeout(()=>nextPage(3),1000);
    } else {
-     document.getElementById('result').innerHTML = "Salah, coba lagi 😢";
+     document.getElementById('result').innerHTML="Salah, coba lagi 😢";
      setTimeout(()=>location.reload(),1000);
    }
  }
@@ -155,6 +164,12 @@ function checkWord(){
 
 function showText(){
  document.getElementById('text').classList.remove('hidden');
+}
+
+function playSong(src){
+ const audio=document.getElementById('audio');
+ audio.src=src;
+ audio.play();
 }
 </script>
 
