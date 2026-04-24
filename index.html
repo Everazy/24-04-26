@@ -17,18 +17,29 @@ h2 { font-family:'Pacifico', cursive; margin-bottom:10px; }
  flex-direction:column;
  text-align:center;
  padding:20px;
+ position:relative;
 }
 .active {
  display:flex;
- animation: fadeIn 0.8s;
+ animation: fadeSmooth 1.2s;
 }
-.active { display:flex; animation: fadeIn 0.8s; }
-button { padding:12px 24px; border:none; border-radius:25px; background:#ff4d6d; color:white; cursor:pointer; transition:0.3s; box-shadow:0 5px 15px rgba(0,0,0,0.2);} 
-button:hover { transform:scale(1.1); }
 
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes fadeSmooth {
+ from{opacity:0; transform:scale(0.98);} 
+ to{opacity:1; transform:scale(1);} 
+}
 
-/* Backgrounds */
+button {
+ padding:12px 24px;
+ border:none;
+ border-radius:25px;
+ background:#ff4d6d;
+ color:white;
+ cursor:pointer;
+ margin-top:15px;
+}
+
+/* BACKGROUNDS */
 #page1{background:linear-gradient(135deg,#ff9a9e,#fad0c4);} 
 #page2{background:linear-gradient(135deg,#a18cd1,#fbc2eb);} 
 #page3{background:linear-gradient(135deg,#fbc2eb,#a6c1ee);} 
@@ -36,66 +47,86 @@ button:hover { transform:scale(1.1); }
 #page5{background:linear-gradient(135deg,#cfd9df,#e2ebf0); color:black;} 
 #page6{background:linear-gradient(135deg,#ff9a9e,#fecfef);} 
 
-/* Pulse animation */
+/* FLOAT HEART */
+.heart {
+ position:absolute;
+ bottom:-20px;
+ font-size:18px;
+ animation: floatUp 6s linear infinite;
+ opacity:0.8;
+}
+@keyframes floatUp {
+ to { transform: translateY(-100vh); opacity:0; }
+}
+
+/* CAT DECOR */
+.cat {
+ position:absolute;
+ width:60px;
+ opacity:0.6;
+}
+.cat.top-left { top:10px; left:10px; }
+.cat.bottom-right { bottom:10px; right:10px; }
+
+/* PAGE 1 */
+.main-img {
+ width:220px;
+ border-radius:20px;
+ cursor:pointer;
+ animation:pulse 1.5s infinite;
+ box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
 @keyframes pulse {
  0%{transform:scale(1);} 
  50%{transform:scale(1.08);} 
  100%{transform:scale(1);} 
 }
 
-/* Page1 image */
-.main-img {
- width:220px; border-radius:20px; cursor:pointer;
- animation:pulse 1.5s infinite;
- transition:0.3s;
- box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-.main-img:hover { transform:scale(1.1); }
-
-/* Game */
+/* GAME */
 .game-box {
- background:white; color:black; padding:25px; border-radius:25px; width:320px;
+ background:white;
+ color:black;
+ padding:25px;
+ border-radius:25px;
+ width:320px;
  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+ animation: fadeSmooth 1s;
+}
+.title-big { font-size:28px; font-weight:bold; }
+.word {
+ font-size:26px;
+ font-family:'Pacifico';
+ color:#ff4d6d;
+ letter-spacing:5px;
+ margin-bottom:10px;
 }
 .letters span {
- display:inline-block; padding:12px; margin:6px; border-radius:12px; background:#eee;
- cursor:pointer; transition:0.3s;
+ display:inline-block;
+ padding:12px;
+ margin:6px;
+ border-radius:12px;
+ background:#eee;
+ cursor:pointer;
+ transition:0.3s;
 }
 .letters span:hover { transform:scale(1.2) rotate(5deg); }
-.letters span.selected { background:#ff4d6d; color:white; transform:scale(1.1); }
+.letters span.selected { background:#ff4d6d; color:white; }
 
-/* Video */
+/* VIDEO */
 .video-box {
- background:white; padding:20px; border-radius:30px;
+ background:white;
+ padding:20px;
+ border-radius:30px;
  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+ position:relative;
 }
-video { border-radius:15px; width:350px; }
-
-/* Music */
-.music-img { width:160px; border-radius:20px; margin-bottom:15px; box-shadow:0 10px 20px rgba(0,0,0,0.2);} 
-.song {
- padding:12px; margin:8px; background:white; color:black;
- border-radius:20px; cursor:pointer; transition:0.3s;
- box-shadow:0 5px 15px rgba(0,0,0,0.2);
+.video-box img.decor {
+ position:absolute;
+ width:50px;
+ top:-20px;
+ right:-20px;
 }
-.song:hover { background:#ff4d6d; color:white; transform:scale(1.05); }
-
-/* Gallery */
-.gallery-box {
- width:300px; height:260px; overflow-y:auto; background:white;
- padding:10px; border-radius:25px; box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-.gallery-box img { width:100%; border-radius:12px; margin-bottom:10px; }
-
-/* Floating photos */
-.float-img {
- position:fixed; bottom:-20px; width:40px; height:40px; border-radius:10px;
- animation: floatUp 6s linear infinite;
-}
-@keyframes floatUp {
- 0%{transform:translateY(0); opacity:1;} 
- 100%{transform:translateY(-100vh); opacity:0;} 
-}
+video { width:360px; border-radius:15px; }
 
 .hidden{display:none}
 </style>
@@ -104,56 +135,34 @@ video { border-radius:15px; width:350px; }
 
 <!-- PAGE 1 -->
 <div class="page active" id="page1">
-  <h2>Klik fotonya ya ❤️</h2>
+  <img src="cat1.png" class="cat top-left">
+  <img src="cat2.png" class="cat bottom-right">
+  <h2>Klik suratnya ya ❤️</h2>
   <img src="cover.png" class="main-img" onclick="nextPage(2)">
 </div>
 
-<!-- PAGE 2 GAME -->
+<!-- PAGE 2 -->
 <div class="page" id="page2">
-  <h2>Susun kata</h2>
+  <img src="cat1.png" class="cat top-left">
+  <h2 class="title-big">Susun Kata</h2>
   <div class="game-box">
-    <p>S A Y A N G</p>
+    <div class="word">SAYANG</div>
     <div class="letters" id="letters"></div>
     <p id="result"></p>
   </div>
 </div>
 
-<!-- PAGE 3 VIDEO -->
+<!-- PAGE 3 -->
 <div class="page" id="page3">
+  <img src="cat2.png" class="cat bottom-right">
   <h2>Video untuk kamu 🎥</h2>
   <div class="video-box">
-    <video id="video" controls>
+    <img src="flower.png" class="decor">
+    <video controls>
       <source src="video.mp4" type="video/mp4">
     </video>
   </div>
-  <button id="videoNext" class="hidden" onclick="nextPage(4)">Lanjut</button>
-</div>
-
-<!-- PAGE 4 MUSIC -->
-<div class="page" id="page4">
-  <h2>Pilih lagu 🎶</h2>
-  <img id="musicImg" class="music-img" src="cover1.jpg">
-  <div>
-    <div class="song" onclick="playSong('lagu1.mp3','cover1.jpg')">Lagu 1</div>
-    <div class="song" onclick="playSong('lagu2.mp3','cover2.jpg')">Lagu 2</div>
-  </div>
-  <audio id="audio" controls></audio>
-  <button onclick="nextPage(5)">Lanjut</button>
-</div>
-
-<!-- PAGE 5 GALLERY -->
-<div class="page" id="page5">
-  <h2>Kenangan kita 📸</h2>
-  <div class="gallery-box">
-    <img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg">
-  </div>
-  <button id="nextBtn" class="hidden" onclick="nextPage(6)">Lanjut</button>
-</div>
-
-<!-- PAGE 6 END -->
-<div class="page" id="page6">
-  <h2>Terima kasih ❤️</h2>
-  <p>Aku sayang kamu 💖</p>
+  <button onclick="nextPage(4)">Lanjut</button>
 </div>
 
 <script>
@@ -162,20 +171,33 @@ function nextPage(n){
  document.getElementById('page'+n).classList.add('active');
 }
 
+// hearts global
+setInterval(()=>{
+ let h=document.createElement('div');
+ h.className='heart';
+ h.innerText='❤️';
+ h.style.left=Math.random()*100+'vw';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},400);
+
 // GAME
 let target="SAYANG";
 let current="";
 let lettersDiv=document.getElementById('letters');
-target.split('').sort(()=>0.5-Math.random()).forEach(l=>{
- let span=document.createElement('span');
- span.innerText=l;
- span.onclick=()=>{
+target.split('').sort(()=>0.5-Math.random()).forEach((l,i)=>{
+ setTimeout(()=>{
+  let span=document.createElement('span');
+  span.innerText=l;
+  span.onclick=()=>{
    current+=l;
    span.classList.add('selected');
    checkWord();
- }
- lettersDiv.appendChild(span);
+  }
+  lettersDiv.appendChild(span);
+ }, i*150);
 });
+
 function resetGame(){ current=""; document.querySelectorAll('.letters span').forEach(s=>s.classList.remove('selected')); }
 function checkWord(){
  if(current.length===target.length){
@@ -183,30 +205,6 @@ function checkWord(){
    else { document.getElementById('result').innerText="Salah 😢"; setTimeout(resetGame,1000); }
  }
 }
-
-// VIDEO delay button
-let video=document.getElementById('video');
-video.addEventListener('timeupdate',()=>{
- if(video.currentTime>=7){ document.getElementById('videoNext').classList.remove('hidden'); }
-});
-
-// MUSIC
-function playSong(src,img){ let a=document.getElementById('audio'); a.src=src; a.play(); document.getElementById('musicImg').src=img; }
-
-// PAGE5 delay
-setTimeout(()=>{ document.getElementById('nextBtn').classList.remove('hidden'); },10000);
-
-// FLOATING PHOTOS LAST PAGE
-setInterval(()=>{
- if(document.getElementById('page6').classList.contains('active')){
-  let img=document.createElement('img');
-  img.src='foto1.jpg';
-  img.className='float-img';
-  img.style.left=Math.random()*100+'vw';
-  document.body.appendChild(img);
-  setTimeout(()=>img.remove(),6000);
- }
-},500);
 </script>
 
 </body>
