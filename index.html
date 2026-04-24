@@ -47,7 +47,12 @@ button { padding:12px 24px; border:none; border-radius:30px; background:linear-g
 video { width:380px; border-radius:20px; }
 
 /* music */
-.music-img { width:150px; border-radius:20px; margin-bottom:10px; }
+.music-img { 
+  width:220px; 
+  max-width:80%;
+  border-radius:20px; 
+  margin-bottom:15px; 
+}
 .song { padding:10px; margin:5px; background:white; color:black; border-radius:15px; cursor:pointer; }
 
 /* gallery */
@@ -154,7 +159,12 @@ function checkWord(){
 }
 
 // MUSIC
-function playSong(src,img){ let a=document.getElementById('audio'); a.src=src; a.play(); document.getElementById('musicImg').src=img; }
+function playSong(src,img){ 
+ let a=document.getElementById('audio'); 
+ a.src=src; 
+ a.play(); 
+ document.getElementById('musicImg').src=img; 
+}
 
 // FLOATING PHOTOS LAST PAGE
 setInterval(()=>{
