@@ -106,19 +106,15 @@ button {
 } 
 
 #page3{
-  background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
-} 
-
-#page4{
   background:linear-gradient(135deg,#ffecd2,#fcb69f);
 } 
 
-#page5{
+#page4{
   background:linear-gradient(135deg,#cfd9df,#e2ebf0);
   color:black;
 } 
 
-#page6{
+#page5{
   background:linear-gradient(135deg,#ff9a9e,#fecfef);
 } 
 
@@ -168,28 +164,6 @@ button {
   color:white; 
 }
 
-/* video */
-.video-box { 
-  background:white; 
-  padding:25px; 
-  border-radius:35px; 
-  position:relative; 
-  box-shadow:0 12px 30px rgba(0,0,0,0.2);
-}
-
-.video-box img.decor { 
-  position:absolute; 
-  width:60px; 
-  top:-25px; 
-  right:-25px; 
-}
-
-video { 
-  width:380px; 
-  max-width:90vw;
-  border-radius:20px; 
-}
-
 /* music */
 .music-img { 
   width:220px; 
@@ -229,8 +203,8 @@ video {
   font-weight:500;
 }
 
-/* PAGE 5 SPLIT MEMORY */
-#page5{
+/* PAGE 4 SPLIT MEMORY */
+#page4{
   padding:0;
   overflow:hidden;
 }
@@ -330,14 +304,29 @@ video {
 .text-card{
   width:100%;
   max-width:520px;
-  min-height:70vh;
-  background:rgba(255,255,255,0.8);
+  height:85vh;
+  background:rgba(255,255,255,0.85);
   border-radius:35px;
   padding:32px;
   box-shadow:0 15px 35px rgba(0,0,0,0.15);
   text-align:left;
   position:relative;
-  overflow:hidden;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+.text-card::-webkit-scrollbar{
+  width:8px;
+}
+
+.text-card::-webkit-scrollbar-thumb{
+  background:#ff758f;
+  border-radius:20px;
+}
+
+.text-card::-webkit-scrollbar-track{
+  background:rgba(255,255,255,0.5);
+  border-radius:20px;
 }
 
 .text-card::before{
@@ -347,6 +336,7 @@ video {
   opacity:0.08;
   right:20px;
   bottom:10px;
+  pointer-events:none;
 }
 
 .text-card h2{
@@ -396,16 +386,16 @@ video {
   }
 
   .memory-left{
-    max-height:55vh;
+    max-height:50vh;
   }
 
   .memory-right{
-    min-height:45vh;
+    height:50vh;
     padding:20px;
   }
 
   .text-card{
-    min-height:auto;
+    height:45vh;
   }
 
   .gallery-box{
@@ -458,20 +448,8 @@ video {
   </div>
 </div>
 
-<!-- PAGE 3 VIDEO -->
+<!-- PAGE 3 MUSIC -->
 <div class="page" id="page3">
-  <h2>Our Love Moment 💞</h2>
-  <div class="video-box">
-    <img src="flower.png" class="decor">
-    <video controls>
-      <source src="video.mp4" type="video/mp4">
-    </video>
-  </div>
-  <button onclick="nextPage(4)">Lanjut</button>
-</div>
-
-<!-- PAGE 4 MUSIC -->
-<div class="page" id="page4">
   <h2>Pilih lagu 🎶</h2>
 
   <img id="musicImg" class="music-img" src="Musikan.png">
@@ -485,11 +463,11 @@ video {
 
   <audio id="audio" controls preload="auto"></audio>
 
-  <button onclick="nextPage(5)">Lanjut</button>
+  <button onclick="nextPage(4)">Lanjut</button>
 </div>
 
-<!-- PAGE 5 GALLERY + TEXT -->
-<div class="page" id="page5">
+<!-- PAGE 4 GALLERY + TEXT -->
+<div class="page" id="page4">
   <div class="memory-page">
 
     <!-- BAGIAN KIRI FOTO -->
@@ -561,23 +539,54 @@ video {
         <h2>Dear My Love ❤️</h2>
 
         <p>
-Hai sayang, makasih yaa udah selalu ada buat aku, selalu hadir di tiap detik hidupku, selalu ada saat aku butuh dan disaat duka ku, makasih udah mau jadi pasangan hidup yang baik buat aku. Aku minta maaf aku pernah semarah itu sama kamu, aku pernah buat kamu takut sama aku, pernah buat kamu kecewa sama sikapku, dan aku pernah ngebuat kamu ngerasa ga di hargai. Mungkin kejadian kemarin bisa terjadi karena ada hal yang kamu ga suka dari aku dan ga nyaman dari aku, tapi aku harap kedepannya kalo ada yang kamu rasa ga nyaman dan ga suka dari aku, lebih baik kamu omongin ke aku daripada kamu harus cari cowo lain sebagai pelampiasan kamu, bahkan disaat kamu marah marah ke aku, aku ga pernah nyari kenyamanan di tempat lain, aku harap kamu bisa mengerti apa yang kurasakan tanpa perlu terjadi kejadiannya ke kamu.
-</p>
-<p>
-Aku sudah pernah bilang, selingkuh itu ga benar dalam alasan apapun, kalo kamu cari 20% yang ga ada di aku, kamu bakal kehilangan 80% dari aku, aku juga manusia biasa yang bisa aja salah, tapi kalo aku salah tolong tegur aku, kamu ga perlu pakai cara lain selain tegur aku dan omongin sama aku, kamu ga perlu diem aja dan kamu malah chat sm cowo lain ;). Aku juga berharap kedepannya kamu bisa lebih memikirkan perasaan aku, dan yang udah berlalu jangan sampai terjadi lagi :)
-</p>
-<p>
-Meski kamu udah buat kesalahan yang besar banget sm aku, aku masih punya ruang maaf dan masih bisa terima kamu, karena aku tau kamu bisa dan kamu sayang dan cinta sama aku meski sayang dan cinta ku lebih besar daripada kamu. Coba kamu liat foto foto kita yang udah aku tampilkan, udah banyak hal yang kita lalui bareng, aku dan kamu saling support dan saling peduli satu sama lain, kita bahagia bareng bareng, kita senang bareng bareng, kita sedih bareng bareng, tapi kita berdua selalu punya tempat dihati masing masing untuk menerima satu sama lain. Aku tau perilaku ku yang kemarin itu salah, aku akui dan aku minta maaf, ayo kita perbaiki dan kita bahagia bareng bareng lagi, masih banyak tempat yang belum kita datangi, masih banyak plan yang perlu kita wujudkan, masih banyak hal hal bahagia yang udah nunggu kita didepan. I Always Love You, aku sayangg dan cintaa bangett samaa kamuu, dan ituu ga akan pernahh surutt, kalo kamu sayang dan cinta sama akuu, pliss cium pipi aku disebelah kamu ini. Let's Continue Our Journey, Honey.
-</p>
-        <button onclick="nextPage(6)">Lanjut</button>
+          Hai sayang, makasih yaa udah selalu ada buat aku, selalu hadir di tiap detik hidupku, selalu ada saat aku butuh dan disaat duka ku, makasih udah mau jadi pasangan hidup yang baik buat aku. ❤️
+        </p>
+
+        <p>
+          Aku minta maaf aku pernah semarah itu sama kamu, aku pernah buat kamu takut sama aku, pernah buat kamu kecewa sama sikapku, dan aku pernah ngebuat kamu ngerasa ga di hargai. 🥺
+        </p>
+
+        <p>
+          Mungkin kejadian kemarin bisa terjadi karena ada hal yang kamu ga suka dari aku dan ga nyaman dari aku, tapi aku harap kedepannya kalo ada yang kamu rasa ga nyaman dan ga suka dari aku, lebih baik kamu omongin ke aku daripada kamu harus cari cowo lain sebagai pelampiasan kamu, bahkan disaat kamu marah marah ke aku, aku ga pernah nyari kenyamanan di tempat lain, aku harap kamu bisa mengerti apa yang kurasakan tanpa perlu terjadi kejadiannya ke kamu.
+        </p>
+
+        <p>
+          Aku sudah pernah bilang, selingkuh itu ga benar dalam alasan apapun, kalo kamu cari 20% yang ga ada di aku, kamu bakal kehilangan 80% dari aku, aku juga manusia biasa yang bisa aja salah, tapi kalo aku salah tolong tegur aku, kamu ga perlu pakai cara lain selain tegur aku dan omongin sama aku, kamu ga perlu diem aja dan kamu malah chat sm cowo lain ;). 🤍
+        </p>
+
+        <p>
+          Aku juga berharap kedepannya kamu bisa lebih memikirkan perasaan aku, dan yang udah berlalu jangan sampai terjadi lagi :)
+        </p>
+
+        <p>
+          Meski kamu udah buat kesalahan yang besar banget sm aku, aku masih punya ruang maaf dan masih bisa terima kamu, karena aku tau kamu bisa dan kamu sayang dan cinta sama aku meski sayang dan cinta ku lebih besar daripada kamu. ❤️‍🩹
+        </p>
+
+        <p>
+          Coba kamu liat foto foto kita yang udah aku tampilkan, udah banyak hal yang kita lalui bareng, aku dan kamu saling support dan saling peduli satu sama lain, kita bahagia bareng bareng, kita senang bareng bareng, kita sedih bareng bareng, tapi kita berdua selalu punya tempat dihati masing masing untuk menerima satu sama lain. 📸
+        </p>
+
+        <p>
+          Aku tau perilaku ku yang kemarin itu salah, aku akui dan aku minta maaf, ayo kita perbaiki dan kita bahagia bareng bareng lagi, masih banyak tempat yang belum kita datangi, masih banyak plan yang perlu kita wujudkan, masih banyak hal hal bahagia yang udah nunggu kita didepan. ✨
+        </p>
+
+        <p>
+          I Always Love You, aku sayangg dan cintaa bangett samaa kamuu, dan ituu ga akan pernahh surutt, kalo kamu sayang dan cinta sama akuu, pliss cium pipi aku disebelah kamu ini. 😚
+        </p>
+
+        <p>
+          Let's Continue Our Journey, Honey. ❤️
+        </p>
+
+        <button onclick="nextPage(5)">Lanjut</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- PAGE 6 END -->
-<div class="page" id="page6">
+<!-- PAGE 5 END -->
+<div class="page" id="page5">
   <h2>Terima kasih ❤️</h2>
   <p>Aku sayang kamu 💖</p>
 </div>
@@ -721,7 +730,7 @@ document.getElementById('audio').addEventListener('error', function(){
 
 // FLOATING PHOTOS LAST PAGE
 setInterval(() => {
-  if(document.getElementById('page6').classList.contains('active')){
+  if(document.getElementById('page5').classList.contains('active')){
     let img = document.createElement('img');
     let randomFoto = photoList[Math.floor(Math.random() * photoList.length)];
 
