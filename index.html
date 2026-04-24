@@ -4,54 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Kamu ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
-body { margin:0; font-family:'Quicksand', sans-serif; background:#111; color:white; text-align:center; overflow:hidden; }
+body { margin:0; font-family:'Poppins', sans-serif; color:white; text-align:center; overflow:hidden; }
 h2 { font-family:'Pacifico', cursive; }
-.page { display:none; padding:20px; animation: fadeIn 0.8s; }
-.active { display:block; }
-button { padding:10px 20px; margin-top:20px; border:none; border-radius:20px; background:#ff4d6d; color:white; cursor:pointer; transition:0.3s; }
-button:hover { transform: scale(1.1); }
+.page { display:none; padding:20px; height:100vh; box-sizing:border-box; }
+.active { display:block; animation: fadeIn 0.8s; }
+button { padding:10px 20px; margin-top:20px; border:none; border-radius:20px; background:#ff4d6d; color:white; cursor:pointer; }
 
-@keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* Background per page */
+#page1 { background: linear-gradient(135deg,#ff9a9e,#fad0c4); }
+#page2 { background: linear-gradient(135deg,#a18cd1,#fbc2eb); }
+#page3 { background: linear-gradient(135deg,#fbc2eb,#a6c1ee); }
+#page4 { background: linear-gradient(135deg,#ffecd2,#fcb69f); }
+#page5 { background: linear-gradient(135deg,#cfd9df,#e2ebf0); color:black; }
+#page6 { background: linear-gradient(135deg,#ff9a9e,#fecfef); }
 
 /* Hearts */
-.heart { position: fixed; bottom: -10px; font-size: 20px; animation: floatUp 5s linear infinite; }
-@keyframes floatUp { 0%{transform:translateY(0);opacity:1;}100%{transform:translateY(-100vh);opacity:0;} }
+.heart { position: fixed; bottom:-10px; animation: floatUp 5s linear infinite; }
+@keyframes floatUp { to { transform: translateY(-100vh); opacity:0; } }
 
-/* Envelope */
-.envelope {
- width:200px;height:120px;background:#ff6f91;margin:100px auto;position:relative;cursor:pointer;
- border-radius:10px;transition:0.5s;
-}
-.envelope:hover { transform: rotate(-3deg) scale(1.1); }
-.envelope:before {
- content:'';position:absolute;top:0;left:0;width:0;height:0;
- border-left:100px solid transparent;border-right:100px solid transparent;border-bottom:60px solid #ff8fab;
-}
-.letter {
- display:none;background:white;color:black;padding:20px;margin-top:20px;border-radius:15px;
- animation: bounceIn 0.8s;
-}
-@keyframes bounceIn {
- 0%{transform:scale(0.5);opacity:0;}70%{transform:scale(1.1);}100%{transform:scale(1);opacity:1;}
-}
+/* Page 1 image */
+.main-img { width:220px; border-radius:20px; margin-top:80px; cursor:pointer; transition:0.4s; }
+.main-img:hover { transform: scale(1.05); }
+.letter { display:none; background:white; color:black; padding:20px; border-radius:15px; margin-top:20px; }
 
-/* Game */
+/* Game box */
+.game-box {
+ background:white; color:black; padding:20px; border-radius:20px; max-width:300px; margin:auto;
+}
 .letters span {
- font-size:30px;margin:5px;padding:10px;background:#333;display:inline-block;cursor:pointer;
- border-radius:10px;transition:0.3s;
+ display:inline-block; padding:10px; margin:5px; border-radius:10px; background:#ddd; cursor:pointer;
 }
-.letters span:hover { background:#ff4d6d; transform: scale(1.3) rotate(5deg); }
+.letters span.selected { background:#ff4d6d; color:white; }
 
-/* Photo */
+/* Video box */
+.video-box {
+ background:white; padding:15px; border-radius:20px; display:inline-block; box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Music */
+.music-box { margin-top:20px; }
+.song { padding:10px; background:white; color:black; margin:5px; border-radius:10px; cursor:pointer; }
+.song:hover { background:#ff4d6d; color:white; }
+.music-img { width:150px; border-radius:15px; margin-top:10px; }
+
+/* Gallery */
+.gallery-box {
+ width:80%; height:250px; overflow-y:auto; background:white; padding:10px; border-radius:20px; margin:auto;
+}
+.gallery-box img { width:100%; margin-bottom:10px; border-radius:10px; }
+
 .hidden { display:none; }
-img { max-width:80%; border-radius:20px; cursor:pointer; transition:0.5s; }
-img:hover { transform: scale(1.05) rotate(1deg); }
-
-/* Music list */
-.song { padding:10px; margin:10px; background:#222; border-radius:15px; cursor:pointer; transition:0.3s; }
-.song:hover { background:#ff4d6d; transform:scale(1.05); }
 </style>
 </head>
 <body>
@@ -60,57 +66,64 @@ img:hover { transform: scale(1.05) rotate(1deg); }
 
 <!-- PAGE 1 -->
 <div class="page active" id="page1">
-  <h2>Klik suratnya ya ❤️</h2>
-  <div class="envelope" onclick="openLetter()"></div>
+  <h2>Klik fotonya ya ❤️</h2>
+  <img src="cover.jpg" class="main-img" onclick="openLetter()">
   <div class="letter" id="letter">
     <p>Hai sayang... aku cuma mau bilang sesuatu 💌</p>
-    <p>Aku bersyukur banget punya kamu ❤️</p>
     <button onclick="nextPage(2)">Lanjut</button>
   </div>
 </div>
 
 <!-- PAGE 2 GAME -->
 <div class="page" id="page2">
-  <h2>Susun kata: S A Y A N G</h2>
-  <div class="letters" id="letters"></div>
-  <p id="result"></p>
+  <h2>Susun kata</h2>
+  <div class="game-box">
+    <p>S A Y A N G</p>
+    <div class="letters" id="letters"></div>
+    <p id="result"></p>
+  </div>
 </div>
 
 <!-- PAGE 3 VIDEO -->
 <div class="page" id="page3">
   <h2>Video untuk kamu 🎥</h2>
-  <video controls width="300">
-    <source src="video.mp4" type="video/mp4">
-  </video>
+  <div class="video-box">
+    <video controls width="250">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
   <br>
   <button onclick="nextPage(4)">Lanjut</button>
 </div>
 
 <!-- PAGE 4 MUSIC -->
 <div class="page" id="page4">
-  <h2>Pilih lagu untuk kita 🎶</h2>
-  <div class="song" onclick="playSong('lagu1.mp3')">Lagu 1 💖</div>
-  <div class="song" onclick="playSong('lagu2.mp3')">Lagu 2 💕</div>
-  <div class="song" onclick="playSong('lagu3.mp3')">Lagu 3 🌹</div>
+  <h2>Pilih lagu 🎶</h2>
+  <img id="musicImg" class="music-img" src="cover1.jpg">
+  <div class="music-box">
+    <div class="song" onclick="playSong('lagu1.mp3','cover1.jpg')">Lagu 1</div>
+    <div class="song" onclick="playSong('lagu2.mp3','cover2.jpg')">Lagu 2</div>
+  </div>
   <audio id="audio" controls></audio>
   <br>
   <button onclick="nextPage(5)">Lanjut</button>
 </div>
 
-<!-- PAGE 5 PHOTO -->
+<!-- PAGE 5 GALLERY -->
 <div class="page" id="page5">
   <h2>Kenangan kita 📸</h2>
-  <img src="foto.jpg" onclick="showText()">
-  <div id="text" class="hidden">
-    <p>Setiap momen sama kamu itu berharga ❤️</p>
-    <button onclick="nextPage(6)">Lanjut</button>
+  <div class="gallery-box">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
   </div>
+  <button id="nextBtn" class="hidden" onclick="nextPage(6)">Lanjut</button>
 </div>
 
 <!-- PAGE 6 END -->
 <div class="page" id="page6">
   <h2>Terima kasih ❤️</h2>
-  <p>Aku sayang kamu, sekarang dan selamanya 💖</p>
+  <p>Aku sayang kamu 💖</p>
 </div>
 
 <script>
@@ -119,58 +132,60 @@ function nextPage(n){
  document.getElementById('page'+n).classList.add('active');
 }
 
-function openLetter(){
- document.getElementById('letter').style.display='block';
-}
+function openLetter(){ document.getElementById('letter').style.display='block'; }
 
-function createHeart(){
- const heart=document.createElement('div');
- heart.classList.add('heart');
- heart.innerText='❤️';
- heart.style.left=Math.random()*100+'vw';
- heart.style.fontSize=(Math.random()*20+10)+'px';
- document.body.appendChild(heart);
- setTimeout(()=>heart.remove(),5000);
-}
-setInterval(createHeart,300);
+// hearts
+setInterval(()=>{
+ let h=document.createElement('div');
+ h.className='heart';
+ h.innerText='❤️';
+ h.style.left=Math.random()*100+'vw';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),5000);
+},300);
 
 // GAME
 let target="SAYANG";
-let shuffled=target.split('').sort(()=>0.5-Math.random());
 let current="";
 let lettersDiv=document.getElementById('letters');
-shuffled.forEach(l=>{
+target.split('').sort(()=>0.5-Math.random()).forEach(l=>{
  let span=document.createElement('span');
  span.innerText=l;
  span.onclick=()=>{
    current+=l;
-   span.style.visibility='hidden';
+   span.classList.add('selected');
    checkWord();
  }
  lettersDiv.appendChild(span);
 });
 
+function resetGame(){
+ current="";
+ document.querySelectorAll('.letters span').forEach(s=>s.classList.remove('selected'));
+}
+
 function checkWord(){
  if(current.length===target.length){
    if(current===target){
-     document.getElementById('result').innerHTML="Benar! ❤️";
+     document.getElementById('result').innerText="Benar ❤️";
      setTimeout(()=>nextPage(3),1000);
    } else {
-     document.getElementById('result').innerHTML="Salah, coba lagi 😢";
-     setTimeout(()=>location.reload(),1000);
+     document.getElementById('result').innerText="Salah, ulang ya 😢";
+     setTimeout(resetGame,1000);
    }
  }
 }
 
-function showText(){
- document.getElementById('text').classList.remove('hidden');
+function playSong(src,img){
+ let a=document.getElementById('audio');
+ a.src=src; a.play();
+ document.getElementById('musicImg').src=img;
 }
 
-function playSong(src){
- const audio=document.getElementById('audio');
- audio.src=src;
- audio.play();
-}
+// delay button page5
+setTimeout(()=>{
+ document.getElementById('nextBtn').classList.remove('hidden');
+},10000);
 </script>
 
 </body>
