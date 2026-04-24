@@ -5,13 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Kamu ❤️</title>
 <style>
-body { margin:0; font-family: Arial; background:#111; color:white; text-align:center; }
+body { margin:0; font-family: Arial; background:#111; color:white; text-align:center; overflow:hidden; }
 .page { display:none; padding:20px; }
 .active { display:block; }
 button { padding:10px 20px; margin-top:20px; border:none; border-radius:10px; background:#ff4d6d; color:white; cursor:pointer; }
 
-/* Page 1 */
-.envelope { width:200px; height:120px; background:#ff6f91; margin:100px auto; position:relative; cursor:pointer; }
+/* Floating hearts */
+.heart {
+ position: fixed;
+ bottom: -10px;
+ font-size: 20px;
+ animation: floatUp 5s linear infinite;
+}
+@keyframes floatUp {
+ 0% { transform: translateY(0); opacity:1; }
+ 100% { transform: translateY(-100vh); opacity:0; }
+}
+
+/* Page 1 envelope */
+.envelope { width:200px; height:120px; background:#ff6f91; margin:100px auto; position:relative; cursor:pointer; transition: transform 0.5s; }
+.envelope:hover { transform: scale(1.1); }
 .envelope:before {
  content:'';
  position:absolute;
@@ -23,17 +36,27 @@ button { padding:10px 20px; margin-top:20px; border:none; border-radius:10px; ba
  border-right:100px solid transparent;
  border-bottom:60px solid #ff8fab;
 }
-.letter { display:none; background:white; color:black; padding:20px; margin-top:20px; border-radius:10px; }
+.letter { display:none; background:white; color:black; padding:20px; margin-top:20px; border-radius:10px; animation: fadeIn 1s; }
+
+@keyframes fadeIn {
+ from { opacity:0; transform: translateY(20px);} 
+ to { opacity:1; transform: translateY(0);} 
+}
 
 /* Game */
-.letters span { font-size:30px; margin:5px; padding:10px; background:#333; display:inline-block; cursor:pointer; }
+.letters span { font-size:30px; margin:5px; padding:10px; background:#333; display:inline-block; cursor:pointer; border-radius:10px; transition:0.3s; }
+.letters span:hover { background:#ff4d6d; transform: scale(1.2); }
 
 /* Photo */
 .hidden { display:none; }
-img { max-width:80%; border-radius:20px; }
+img { max-width:80%; border-radius:20px; cursor:pointer; transition:0.5s; }
+img:hover { transform: scale(1.05); }
 </style>
 </head>
 <body>
+
+<!-- Floating hearts container -->
+<div id="hearts"></div>
 
 <!-- PAGE 1 -->
 <div class="page active" id="page1">
@@ -68,15 +91,15 @@ img { max-width:80%; border-radius:20px; }
   <h2>Kenangan kita 📸</h2>
   <img src="foto.jpg" onclick="showText()">
   <div id="text" class="hidden">
-    <p>Setiap momen sama kamu itu berharga ❤️</p>
+    <p style="animation: fadeIn 1s;">Setiap momen sama kamu itu berharga ❤️</p>
     <button onclick="nextPage(5)">Lanjut</button>
   </div>
 </div>
 
 <!-- PAGE 5 -->
 <div class="page" id="page5">
-  <h2>Terima kasih ❤️</h2>
-  <p>Aku sayang kamu, sekarang dan selamanya 💖</p>
+  <h2 style="animation: fadeIn 2s;">Terima kasih ❤️</h2>
+  <p style="animation: fadeIn 3s;">Aku sayang kamu, sekarang dan selamanya 💖</p>
 </div>
 
 <script>
@@ -88,6 +111,18 @@ function nextPage(n){
 function openLetter(){
  document.getElementById('letter').style.display='block';
 }
+
+// Floating hearts generator
+function createHeart(){
+ const heart = document.createElement('div');
+ heart.classList.add('heart');
+ heart.innerText = '❤️';
+ heart.style.left = Math.random()*100 + 'vw';
+ heart.style.fontSize = (Math.random()*20 + 10) + 'px';
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),5000);
+}
+setInterval(createHeart, 300);
 
 // GAME
 let target = "SAYANG";
@@ -125,10 +160,3 @@ function showText(){
 
 </body>
 </html>
-
-<!--
-CATATAN:
-- Ganti "video.mp4" dengan file video kamu (upload ke GitHub atau Vercel)
-- Ganti "foto.jpg" dengan foto kalian
-- Bisa di deploy ke Vercel seperti sebelumnya
--->
