@@ -5,23 +5,81 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Kamu ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
-body { margin:0; font-family:'Poppins', sans-serif; color:white; overflow:hidden; }
-h2 { font-family:'Pacifico', cursive; }
-.page { display:none; height:100vh; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:20px; position:relative; }
-.active { display:flex; animation: fadeSmooth 1.2s ease; }
-@keyframes fadeSmooth { from{opacity:0; transform:scale(0.96);} to{opacity:1; transform:scale(1);} }
-button { padding:12px 24px; border:none; border-radius:30px; background:linear-gradient(45deg,#ff4d6d,#ff758f); color:white; cursor:pointer; margin-top:15px; }
+
+body { 
+  margin:0; 
+  font-family:'Poppins', sans-serif; 
+  color:white; 
+  overflow:hidden; 
+}
+
+h2 { 
+  font-family:'Pacifico', cursive; 
+}
+
+.page { 
+  display:none; 
+  height:100vh; 
+  justify-content:center; 
+  align-items:center; 
+  flex-direction:column; 
+  text-align:center; 
+  padding:20px; 
+  position:relative; 
+}
+
+.active { 
+  display:flex; 
+  animation: fadeSmooth 1.2s ease; 
+}
+
+@keyframes fadeSmooth { 
+  from{opacity:0; transform:scale(0.96);} 
+  to{opacity:1; transform:scale(1);} 
+}
+
+button { 
+  padding:12px 24px; 
+  border:none; 
+  border-radius:30px; 
+  background:linear-gradient(45deg,#ff4d6d,#ff758f); 
+  color:white; 
+  cursor:pointer; 
+  margin-top:15px; 
+}
 
 /* floating hearts */
-.heart { position:absolute; bottom:-20px; font-size:16px; animation: floatUp 6s linear infinite; opacity:0.7; }
-@keyframes floatUp { to { transform: translateY(-110vh); opacity:0; } }
+.heart { 
+  position:absolute; 
+  bottom:-20px; 
+  font-size:16px; 
+  animation: floatUp 6s linear infinite; 
+  opacity:0.7; 
+}
+
+@keyframes floatUp { 
+  to { transform: translateY(-110vh); opacity:0; } 
+}
 
 /* cat decor */
-.cat { position:absolute; width:55px; opacity:0.5; }
-.cat.top-left { top:15px; left:15px; }
-.cat.bottom-right { bottom:15px; right:15px; }
+.cat { 
+  position:absolute; 
+  width:55px; 
+  opacity:0.5; 
+}
+
+.cat.top-left { 
+  top:15px; 
+  left:15px; 
+}
+
+.cat.bottom-right { 
+  bottom:15px; 
+  right:15px; 
+}
 
 /* backgrounds */
 #page1{background:linear-gradient(135deg,#ff9a9e,#fad0c4);} 
@@ -32,19 +90,68 @@ button { padding:12px 24px; border:none; border-radius:30px; background:linear-g
 #page6{background:linear-gradient(135deg,#ff9a9e,#fecfef);} 
 
 /* page1 */
-.main-img { width:230px; border-radius:25px; cursor:pointer; animation:pulse 1.5s infinite; box-shadow:0 15px 40px rgba(0,0,0,0.3);} 
-@keyframes pulse { 50%{transform:scale(1.1);} }
+.main-img { 
+  width:230px; 
+  border-radius:25px; 
+  cursor:pointer; 
+  animation:pulse 1.5s infinite; 
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+} 
+
+@keyframes pulse { 
+  50%{transform:scale(1.1);} 
+}
 
 /* game */
-.game-box { background:white; color:black; padding:30px; border-radius:30px; width:320px; }
-.word { font-size:28px; font-family:'Pacifico'; color:#ff4d6d; letter-spacing:6px; }
-.letters span { display:inline-block; padding:12px; margin:6px; border-radius:14px; background:#eee; cursor:pointer; }
-.letters span.selected { background:#ff4d6d; color:white; }
+.game-box { 
+  background:white; 
+  color:black; 
+  padding:30px; 
+  border-radius:30px; 
+  width:320px; 
+}
+
+.word { 
+  font-size:28px; 
+  font-family:'Pacifico'; 
+  color:#ff4d6d; 
+  letter-spacing:6px; 
+}
+
+.letters span { 
+  display:inline-block; 
+  padding:12px; 
+  margin:6px; 
+  border-radius:14px; 
+  background:#eee; 
+  cursor:pointer; 
+}
+
+.letters span.selected { 
+  background:#ff4d6d; 
+  color:white; 
+}
 
 /* video */
-.video-box { background:white; padding:25px; border-radius:35px; position:relative; }
-.video-box img.decor { position:absolute; width:60px; top:-25px; right:-25px; }
-video { width:380px; border-radius:20px; }
+.video-box { 
+  background:white; 
+  padding:25px; 
+  border-radius:35px; 
+  position:relative; 
+}
+
+.video-box img.decor { 
+  position:absolute; 
+  width:60px; 
+  top:-25px; 
+  right:-25px; 
+}
+
+video { 
+  width:380px; 
+  max-width:90vw;
+  border-radius:20px; 
+}
 
 /* music */
 .music-img { 
@@ -53,18 +160,67 @@ video { width:380px; border-radius:20px; }
   border-radius:20px; 
   margin-bottom:15px; 
 }
-.song { padding:10px; margin:5px; background:white; color:black; border-radius:15px; cursor:pointer; }
+
+.song { 
+  padding:12px 18px; 
+  margin:8px; 
+  background:white; 
+  color:black; 
+  border-radius:15px; 
+  cursor:pointer; 
+  display:inline-block;
+  font-weight:500;
+}
+
+.song:hover {
+  background:#ff4d6d;
+  color:white;
+}
+
+#audio {
+  margin-top:12px;
+  width:280px;
+  max-width:90vw;
+}
+
+#musicStatus {
+  min-height:24px;
+  font-size:14px;
+  color:#7a2b2b;
+  font-weight:500;
+}
 
 /* gallery */
-.gallery-box { width:300px; height:260px; overflow-y:auto; background:white; padding:10px; border-radius:25px; }
-.gallery-box img { width:100%; border-radius:10px; margin-bottom:10px; }
+.gallery-box { 
+  width:300px; 
+  height:260px; 
+  overflow-y:auto; 
+  background:white; 
+  padding:10px; 
+  border-radius:25px; 
+}
+
+.gallery-box img { 
+  width:100%; 
+  border-radius:10px; 
+  margin-bottom:10px; 
+}
 
 /* floating photos last */
-.float-img { position:absolute; bottom:-20px; width:45px; border-radius:10px; animation: floatUp 6s linear infinite; }
+.float-img { 
+  position:absolute; 
+  bottom:-20px; 
+  width:45px; 
+  border-radius:10px; 
+  animation: floatUp 6s linear infinite; 
+}
 
-.hidden{display:none}
+.hidden{
+  display:none;
+}
 </style>
 </head>
+
 <body>
 
 <!-- PAGE 1 -->
@@ -100,12 +256,18 @@ video { width:380px; border-radius:20px; }
 <!-- PAGE 4 MUSIC -->
 <div class="page" id="page4">
   <h2>Pilih lagu 🎶</h2>
+
   <img id="musicImg" class="music-img" src="Musikan.png">
+
   <div>
-    <div class="song" onclick="playSong('KOMANG.mp3','Musikk.png')">Lagu 1</div>
-    <div class="song" onclick="playSong('PHOTOGRAPH.mp3','Musik1.png')">Lagu 2</div>
+    <div class="song" onclick="playSong('./KOMANG.mp3','Musikk.png','Lagu 1')">Lagu 1</div>
+    <div class="song" onclick="playSong('./PHOTOGRAPH.mp3','Musik1.png','Lagu 2')">Lagu 2</div>
   </div>
-  <audio id="audio" controls></audio>
+
+  <p id="musicStatus">Klik salah satu lagu dulu ya 🎧</p>
+
+  <audio id="audio" controls preload="auto"></audio>
+
   <button onclick="nextPage(5)">Lanjut</button>
 </div>
 
@@ -113,7 +275,9 @@ video { width:380px; border-radius:20px; }
 <div class="page" id="page5">
   <h2>Kenangan kita 📸</h2>
   <div class="gallery-box">
-    <img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
   </div>
   <button onclick="nextPage(6)">Lanjut</button>
 </div>
@@ -126,57 +290,93 @@ video { width:380px; border-radius:20px; }
 
 <script>
 function nextPage(n){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById('page'+n).classList.add('active');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + n).classList.add('active');
 }
 
 // hearts
-setInterval(()=>{
- let h=document.createElement('div');
- h.className='heart';
- h.innerText='❤️';
- h.style.left=Math.random()*100+'vw';
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),6000);
-},400);
+setInterval(() => {
+  let h = document.createElement('div');
+  h.className = 'heart';
+  h.innerText = '❤️';
+  h.style.left = Math.random() * 100 + 'vw';
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 400);
 
 // GAME
-let target="SAYANG";
-let current="";
-let lettersDiv=document.getElementById('letters');
-target.split('').sort(()=>0.5-Math.random()).forEach(l=>{
- let span=document.createElement('span');
- span.innerText=l;
- span.onclick=()=>{ current+=l; span.classList.add('selected'); checkWord(); }
- lettersDiv.appendChild(span);
+let target = "SAYANG";
+let current = "";
+let lettersDiv = document.getElementById('letters');
+
+target.split('').sort(() => 0.5 - Math.random()).forEach(l => {
+  let span = document.createElement('span');
+  span.innerText = l;
+
+  span.onclick = () => { 
+    if(span.classList.contains('selected')) return;
+
+    current += l; 
+    span.classList.add('selected'); 
+    checkWord(); 
+  };
+
+  lettersDiv.appendChild(span);
 });
-function resetGame(){ current=""; document.querySelectorAll('.letters span').forEach(s=>s.classList.remove('selected')); }
-function checkWord(){
- if(current.length===target.length){
-   if(current===target){ document.getElementById('result').innerText="Benar ❤️"; setTimeout(()=>nextPage(3),1000); }
-   else { document.getElementById('result').innerText="Salah 😢"; setTimeout(resetGame,1000); }
- }
+
+function resetGame(){
+  current = ""; 
+  document.querySelectorAll('.letters span').forEach(s => s.classList.remove('selected')); 
+  document.getElementById('result').innerText = "";
 }
 
-// MUSIC
-function playSong(src,img){ 
- let a=document.getElementById('audio'); 
- a.src=src; 
- a.play(); 
- document.getElementById('musicImg').src=img; 
+function checkWord(){
+  if(current.length === target.length){
+    if(current === target){ 
+      document.getElementById('result').innerText = "Benar ❤️"; 
+      setTimeout(() => nextPage(3), 1000); 
+    } else { 
+      document.getElementById('result').innerText = "Salah 😢"; 
+      setTimeout(resetGame, 1000); 
+    }
+  }
 }
+
+// MUSIC FIX
+function playSong(src, img, title){ 
+  let audio = document.getElementById('audio');
+  let musicImg = document.getElementById('musicImg');
+  let status = document.getElementById('musicStatus');
+
+  audio.pause();
+  audio.src = src;
+  audio.load();
+
+  musicImg.src = img;
+  status.innerText = "Memutar " + title + " 🎶";
+
+  audio.play().catch(() => {
+    status.innerText = "Lagunya belum bisa diputar. Cek nama file MP3 dan pastikan satu folder dengan HTML.";
+  });
+}
+
+// Kalau file audio error / tidak ditemukan
+document.getElementById('audio').addEventListener('error', function(){
+  document.getElementById('musicStatus').innerText = 
+  "File lagunya tidak ketemu. Pastikan namanya persis: KOMANG.mp3 atau PHOTOGRAPH.mp3";
+});
 
 // FLOATING PHOTOS LAST PAGE
-setInterval(()=>{
- if(document.getElementById('page6').classList.contains('active')){
-  let img=document.createElement('img');
-  img.src='foto1.jpg';
-  img.className='float-img';
-  img.style.left=Math.random()*100+'vw';
-  document.body.appendChild(img);
-  setTimeout(()=>img.remove(),6000);
- }
-},500);
+setInterval(() => {
+  if(document.getElementById('page6').classList.contains('active')){
+    let img = document.createElement('img');
+    img.src = 'foto1.jpg';
+    img.className = 'float-img';
+    img.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(img);
+    setTimeout(() => img.remove(), 6000);
+  }
+}, 500);
 </script>
 
 </body>
